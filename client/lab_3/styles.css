@@ -3,6 +3,13 @@
     padding: 0;
     box-sizing: border-box;
   }
+
+  .title{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #6c59da; 
+  }
   
   .menu-container {
     color: #fff;
