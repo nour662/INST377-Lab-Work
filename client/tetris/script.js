@@ -100,12 +100,12 @@ function moveLeft() {
 }
 
 // move right
-function moveright() {
+function moveRight() {
     undraw();
-    const isAtRightEdge = current.some((index) => (currentPosition + index) % width === width - 1);
-    if (!isAtRightEdge) currentPosition += 1;
-    if (current.some((index) => squares[currentPosition + index].classList.contains('block2'))) {
-      currentPosition -= 1;
+    const isAtRight = current.some((index) => (currentPos + index) % width === width - 1);
+    if (!isAtRight) currentPos += 1;
+    if (current.some((index) => squares[currentPos + index].classList.contains('taken'))) {
+      currentPos -= 1;
     }
     draw();
   }
@@ -116,7 +116,13 @@ function moveright() {
 function control(e) {
     if (e.keyCode === 37) {
         moveLeft();
+    } else if (e.keyCode === 38) {
+        // rotate
+    } else if (e.keyCode === 39) {
+        moveRight();
+    } else if (e.keyCode === 40) {
+        moveDown();
     }
 }
-document.addEventListener('keyup' , control)
+document.addEventListener('keyup', control);
 });
