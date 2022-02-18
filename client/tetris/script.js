@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable prefer-const */
 /* eslint-disable indent */
 document.addEventListener('DOMContentLoaded', () => {
@@ -6,6 +7,7 @@ let squares = Array.from(document.querySelectorAll('.grid div'));
 const ScoreDisplay = document.querySelector('#score');
 const StartBtn = document.querySelector('#start-button');
 const width = 10;
+let nextRandom = 0;
 
 // Tetrominos
 
@@ -79,10 +81,12 @@ function moveDown() {
 function freeze() {
     if (current.some((index) => squares[currentPos + index + width].classList.contains('taken'))) {
         current.forEach((index) => squares[currentPos + index].classList.add('taken'));
-        rand = Math.floor(Math.random() * tet.length);
+        random = nextRandom;
+        nextRandom = Math.floor(Math.random() * tet.length);
         current = tet[random][currentRot];
         currentPos = 4;
         draw();
+        displayShape();
     }
 }
 
@@ -110,14 +114,50 @@ function moveRight() {
     draw();
   }
 
-  timerId = setInterval(moveDown, 1000);
+// rotate
+function rotate() {
+    undraw();
+    currentRot++;
+    if (currentRot === current.length) {
+        currentRot = 0;
+    }
+    current = tet[random][currentRot];
+    draw();
+}
+
+// minigrid
+const displaySquares = document.querySelectorAll('mini-grid div');
+const displayWidth = 4;
+let displayIndex = 0;
+
+// tet without rotations
+const nextTet = [
+    [1, displayWidth + 1, displayWidth * 2 + 1, 2],
+    [0, displayWidth, displayWidth + 1, displayWidth * 2 + 1],
+    [1, displayWidth, displayWidth + 1, displayWidth + 2],
+    [0, 1, displayWidth, displayWidth + 1],
+    [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1]
+  ];
+
+// display shape
+
+function displayShape () {
+    displaySquares.forEach((square) => {
+        square.classList.remove('tetromino');
+    });
+    upNextTet[nextRandom].forEach((index) => {
+        displaySquares[displayIndex + index].classList.add('tetromino');
+    });
+}
+
+timerId = setInterval(moveDown, 1000);
 
 // keyCode
 function control(e) {
     if (e.keyCode === 37) {
         moveLeft();
     } else if (e.keyCode === 38) {
-        // rotate
+        rotate();
     } else if (e.keyCode === 39) {
         moveRight();
     } else if (e.keyCode === 40) {
