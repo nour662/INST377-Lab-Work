@@ -1,3 +1,4 @@
+/* eslint-disable no-loop-func */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-plusplus */
 /* eslint-disable prefer-const */
@@ -89,6 +90,7 @@ function freeze() {
         currentPos = 4;
         draw();
         displayShape();
+        gameOver();
     }
 }
 
@@ -164,6 +166,31 @@ StartBtn.addEventListener('click', () => {
         displayShape();
     }
 });
+
+// add score
+function addScore() {
+    for (let i = 0; i < 199; i += width) {
+        const row = [i, i + 1, i + 2, i + 3, i + 4, i + 5, i + 6, i + 7, i + 8, i + 9];
+
+        if (row.every((index) => squares[index].classList.contains('talen'))) {
+            score += 10;
+            ScoreDisplay.innerHTML = score;
+            row.forEach((index) => {
+                squares[index].classList.remove('taken');
+                squares[index].classList.remove('tetromino');
+            });
+            const squaresRemoved = squares.splice(i, width);
+            squares = squaresRemoved.concat(squares);
+            squares.forEach((cell) => grid.appendChild);
+        }
+    }
+}
+function gameOver() {
+    if (current.some((index) => squares[currentPos + index].classList.contains('taken'))) {
+        ScoreDisplay.innerHTML = 'end';
+        clearInterval(timerId);
+    }
+}
 
 // keyCode
 function control(e) {
