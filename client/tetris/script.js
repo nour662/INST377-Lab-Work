@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-plusplus */
 /* eslint-disable prefer-const */
 /* eslint-disable indent */
@@ -8,6 +9,7 @@ const ScoreDisplay = document.querySelector('#score');
 const StartBtn = document.querySelector('#start-button');
 const width = 10;
 let nextRandom = 0;
+let timerId;
 
 // Tetrominos
 
@@ -58,7 +60,7 @@ let current = tet[random][0];
 // draw
 function draw() {
     current.forEach((index) => {
-      squares[currentPosition + index].classList.add('block');
+      squares[currentPosition + index].classList.add('tetromino');
       squares[currentPosition + index].style.backgroundImage = colors[random];
     });
   }
@@ -150,7 +152,18 @@ function displayShape () {
     });
 }
 
-timerId = setInterval(moveDown, 1000);
+// add functionality to the button
+StartBtn.addEventListener('click', () => {
+    if (timerId) {
+        clearInterval(timerId);
+        timerId = null;
+    } else {
+        draq();
+        timerId = setInterval(moveDown, 1000);
+        nextRandom = Math.floor(Math.random() * tet.length);
+        displayShape();
+    }
+});
 
 // keyCode
 function control(e) {
