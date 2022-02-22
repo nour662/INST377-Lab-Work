@@ -1,40 +1,45 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-use-before-define */
 /* eslint-disable no-restricted-syntax */
-document.addEventListener('DOMContentLoaded', () => {
-  let slidePos = 0;
-  const slides = document.querySelectorAll('photo-grid-items');
-  const totalSlides = slides.length;
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-plusplus */
+let slidePosition = 0;
+const slides = document.querySelectorAll('photo-grid-tiem');
+const totalSlides = slides.length;
 
-  document.querySelector('#next-button').addEventListener('click', () => {
-    moveToNext();
+document.querySelector('#next-button')
+  .addEventListener('click', () => {
+    moveToNextSlide();
   });
-  document.querySelector('#prev-button').addEventListener('click', () => {
-    moveToPrev();
+document
+  .querySelector('#prev-button')
+  .addEventListener('click', () => {
+    moveToPrevSlide();
   });
 
-  function updateSlidePos() {
-    for (const slide of slides) {
-      slide.classList.remove('photo_grid_item--visible');
-      slide.classList.add('photo_grid_item--hidden');
-    }
-    slides[slidePos].classList.add('photo-grid-item photo-grid-item--visible');
+function updateSlidePosition() {
+  for (const slide of slides) {
+    slide.classList.remove('photo-grid-item--visible');
+    slide.classList.add('photo-grid-item--hidden');
   }
 
-  function moveToNext() {
-    if (slidePos === totalSlides - 1) {
-      slidePos = 0;
-    } else {
-      slidePos++;
-    }
-    updateSlidePos();
+  slides[slidePosition].classList.add('photo-grid-item--visible');
+}
+
+function moveToNextSlide() {
+  if (slidePosition === totalSlides - 1) {
+    slidePosition = 0;
+  } else {
+    slidePosition++;
   }
-  function moveToPrev() {
-    if (slidePos === 0) {
-      slidePos = totalSlides - 1;
-    } else {
-      slidePos--;
-    }
-    updateSlidePos();
+
+  updateSlidePosition();
+}
+
+function moveToPrevSlide() {
+  if (slidePosition === 0) {
+    slidePosition = totalSlides - 1;
+  } else {
+    slidePosition--;
   }
-});
+
+  updateSlidePosition();
+}
