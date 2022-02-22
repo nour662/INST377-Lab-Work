@@ -58,17 +58,29 @@
   }
   
   .photo-grid {
-    width: 900px;
+    overflow: hidden;
+    position: relative;
+    max-width: 900px;
     display: flex;
     justify-content: center; 
     flex-wrap: wrap;
   }
   
-  .photo-grid-item {
-    border: 1px solid #fff;
-    width: 300px;
-    height: 300px;
+  .photo-grid-item, 
+  .photo-grid-item--hidden{ 
+    display: none;
   }
+  .photo-grid-item img{
+    max-width: 900px;
+    width: 100%;
+    height: auto;
+  }
+  .photo-grid .photo-grid-item--visible{
+    display: block;
+  }
+  
+
+
   .footer {
     display: flex;
     justify-content: space-between;

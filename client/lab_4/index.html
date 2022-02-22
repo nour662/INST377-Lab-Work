@@ -30,9 +30,8 @@
     </div>
 
     <div class='photo-grid-container'>
-        <button id="prev-button">Prev</button>
         <div class='photo-grid'>
-          <div class='photo-grid-item first-item'>
+          <div class='photo-grid-item photo-grid-item--visible'>
             <img src='images/one.svg'/>
           </div>
           <div class='photo-grid-item'>
@@ -48,7 +47,11 @@
             <img src='images/five.svg'/>
           </div>
         </div>
-        <button id="next-button">Next</button>
+      </div>
+
+      <div class = 'carousel_actions'>
+        <button id="prev-button" aria-label="prev">Prev</button>
+        <button id="next-button" aria-label="next">Next</button>
       </div>
       
     <div class='footer'>
