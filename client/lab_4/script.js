@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
       slide.classList.remove('.photo-grid-item--visible');
       slide.classList.add('.photo-grid-item--hidden');
     }
-
+    console.log(slidePosition)
     slides[slidePosition].classList.add('.photo-grid-item--visible');
   }
 
