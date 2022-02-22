@@ -4,6 +4,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   let slidePosition = 0;
   const slides = document.querySelectorAll('.photo-grid-item');
+  console.log(slides)
   const totalSlides = slides.length;
 
   document.querySelector('#next-button').addEventListener('click', () => {
