@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const slides = document.querySelectorAll('photo-grid-items');
   const totalSlides = slides.length;
 
-  document.querySelector('next-button').addEventListener('click', () => {
+  document.querySelector('#next-button').addEventListener('click', () => {
     moveToNext();
   });
-  document.querySelector('prev-button').addEventListener('click', () => {
+  document.querySelector('#prev-button').addEventListener('click', () => {
     moveToPrev();
   });
 
