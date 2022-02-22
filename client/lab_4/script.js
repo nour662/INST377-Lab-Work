@@ -5,15 +5,12 @@ let slidePosition = 0;
 const slides = document.querySelectorAll('photo-grid-tiem');
 const totalSlides = slides.length;
 
-document.querySelector('#next-button')
-  .addEventListener('click', () => {
-    moveToNextSlide();
-  });
-document
-  .querySelector('#prev-button')
-  .addEventListener('click', () => {
-    moveToPrevSlide();
-  });
+document.querySelector('#next-button').addEventListener('click', () => {
+  moveToNextSlide();
+});
+document.querySelector('#prev-button').addEventListener('click', () => {
+  moveToPrevSlide();
+});
 
 function updateSlidePosition() {
   for (const slide of slides) {
