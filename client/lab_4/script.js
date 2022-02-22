@@ -3,7 +3,7 @@
 /* eslint-disable no-plusplus */
 document.addEventListener('DOMContentLoaded', () => {
   let slidePosition = 0;
-  const slides = document.querySelectorAll('photo-grid-item');
+  const slides = document.querySelectorAll('.photo-grid-item');
   const totalSlides = slides.length;
 
   document.querySelector('#next-button').addEventListener('click', () => {
@@ -15,11 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateSlidePosition() {
     for (const slide of slides) {
-      slide.classList.remove('photo-grid-item--visible');
+      slide.classList.remove('.photo-grid-item--visible');
       slide.classList.add('photo-grid-item--hidden');
     }
 
-    slides[slidePosition].classList.add('photo-grid-item--visible');
+    slides[slidePosition].classList.add('.photo-grid-item--visible');
   }
 
   function moveToNextSlide() {
