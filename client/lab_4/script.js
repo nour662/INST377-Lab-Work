@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelector('#next-button').addEventListener('click', () => {
     moveToNextSlide();
+    console.log('move')
   });
   document.querySelector('#prev-button').addEventListener('click', () => {
     moveToPrevSlide();
@@ -17,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     for (const slide of slides) {
       slide.classList.remove('.photo-grid-item--visible');
       slide.classList.add('.photo-grid-item--hidden');
-      console.log('worked')
     }
 
     slides[slidePosition].classList.add('.photo-grid-item--visible');
