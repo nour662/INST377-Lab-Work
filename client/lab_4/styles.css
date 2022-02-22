@@ -67,7 +67,7 @@
   }
   
   .photo-grid-item, 
-  .photo-grid-item--hidden{ 
+  .photo-grid .photo-grid-item--hidden{ 
     display: none;
   }
   .photo-grid-item img{
