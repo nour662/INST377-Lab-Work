@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateSlidePosition() {
     for (const slide of slides) {
       slide.classList.remove('.photo-grid-item--visible');
-      slide.classList.add('photo-grid-item--hidden');
+      slide.classList.add('.photo-grid-item--hidden');
     }
 
     slides[slidePosition].classList.add('.photo-grid-item--visible');
