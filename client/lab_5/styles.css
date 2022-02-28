@@ -22,6 +22,7 @@ body {
   display: flex;
 }
 .container {
+  background-color: white;
   max-width: 960px;
   margin-top: 25px;
 }
