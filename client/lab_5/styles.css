@@ -22,7 +22,7 @@ body {
   display: flex;
 }
 .container {
-  background-color: white;
+  background-color: yellow;
   display: flex;
   justify-content: center;
   max-width: 960px;
