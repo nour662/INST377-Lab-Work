@@ -25,13 +25,12 @@ body {
   max-width: 960px;
   margin-top: 25px;
 }
-
 .speaker-form-header {
   text-align: center;
   background-color: #F6F7F8;
   border: 1px solid #D6D9DC;
   border-radius: 3px;
- 
+  
   width: 80%;
   margin: 40px 0;
   padding: 50px;
@@ -41,24 +40,34 @@ body {
   font-size: 30px;
   margin-bottom: 20px;
 }
-
 .speaker-form {
-  width: 600px;
+  background-color: #F6F7F8;
+  border: 1px solid #D6D9DC;
+  border-radius: 3px;
+  
+  width: 80%;
+  padding: 50px;
+  margin: 0 0 40px 0;
 }
 .form-row {
-  flex-direction: row;
-  align-items: flex-start; /* To avoid stretching */
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
+
 .form-row input[type='text'] {
-  width: 250px;
-  height: initial;
+  background-color: #FFFFFF;
+  border: 1px solid #D6D9DC;
+  border-radius: 3px;
+  width: 100%;
+  padding: 7px;
+  font-size: 14px;
 }
+
 .form-row label {
-  text-align: right;
-  width: 120px;
-  margin-top: 7px;
-  padding-right: 20px;
+  margin-bottom: 15px;
 }
 .legacy-form-row {
   border: none;
@@ -83,8 +92,6 @@ body {
 .legacy-form-row input[type='radio'] {
   float: left;
 }
-
-
 @media only screen and (min-width: 700px) {
   /* ... */
   .legacy-form-row {
