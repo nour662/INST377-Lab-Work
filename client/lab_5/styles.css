@@ -36,7 +36,7 @@ body {
   display: flex;
   padding: 15px;
   border-radius: 4px;
-  background-color: hsl((40), 100%, 67%);
+  background-color: yellow;
 }
 .page_item{
   display: flex;
