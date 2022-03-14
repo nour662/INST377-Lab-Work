@@ -16,6 +16,8 @@ body {
 .columns {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 25px;
 }
 
 .wrapper {
