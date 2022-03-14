@@ -32,3 +32,10 @@ body {
   border-radius: 4px;
   background-color: hsl((40), 100%, 67%);
 }
+.page_item{
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 4px;
+  background-color: #efefef;
+}
