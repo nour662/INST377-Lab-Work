@@ -20,6 +20,10 @@ body {
   margin-top: 25px;
 }
 
+.columns form{
+  display: flex;
+  flex-direction: column;
+}
 .wrapper {
   display: flex;
 }
