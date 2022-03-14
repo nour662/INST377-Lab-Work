@@ -54,5 +54,5 @@ body {
 }
 .form_item fieldset{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }

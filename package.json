@@ -30,9 +30,11 @@
   "devDependencies": {
     "@babel/core": "^7.12.17",
     "@babel/register": "^7.12.13",
+    "concurrently": "^7.0.0",
     "eslint": "^7.20.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-cypress": "^2.11.1",
-    "eslint-plugin-import": "^2.22.1"
+    "eslint-plugin-import": "^2.22.1",
+    "http-server": "^14.1.0"
   }
 }
