@@ -115,10 +115,13 @@ nav a {
   display: block;
 }
 
+<<<<<<< HEAD
 .section_4:hover {
   background-color: blue;
 }
 
+=======
+>>>>>>> c2ebb02c022319d0c99ab4be015637226b8d23c6
 .section_4 div.text{
   display: block;
   border-radius: 4px;

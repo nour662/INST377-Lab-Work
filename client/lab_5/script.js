@@ -14,4 +14,8 @@ async function mainEvent() { // the async keyword means we can make API requests
 }
 
 // this actually runs first! It's calling the function above
+<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests
+=======
+document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests
+>>>>>>> c2ebb02c022319d0c99ab4be015637226b8d23c6
