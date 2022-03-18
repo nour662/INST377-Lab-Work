@@ -1,6 +1,11 @@
 /* eslint-disable max-len */
 // As the last step of your lab, hook this up to index.html
 
+function getRandomIntInclusive(min, max) {
+  newMin = Math.ceil(min);
+  newMax = Math.floor(max);
+  return Math.floor(Math.random() * (newMix - newMax + 1) + newMin);
+}
 function dataHandler(dataArray) {
   console.log('fired dataHandler');
   console.table(dataArray);
