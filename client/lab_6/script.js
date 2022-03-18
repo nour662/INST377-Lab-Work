@@ -23,7 +23,9 @@ function createHtmlList(collection) {
   const targetList = document.querySelector('.resto-list');
   targetList.innerHTML = '';
   collection.forEach((item) => {
-    const injectThis = `<li>${item.name}</li>`;
+    const {name} = item;
+    const displayName = name.toLowerCase();
+    const injectThis = `<li>${displayName}</li>`;
     targetList.innerHTML += injectThis;
   });
 }
