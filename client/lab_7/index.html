@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="'X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Nour Ali Lab 7</title>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'>
+    <link rel='stylesheet' href='styles.css'/>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="header">Nour Ali Lab 7</div>
+            <div class="columns">
+                <div class="page_item">
+                    <form class='main_form'>
+                        <div class="form_item">
+                            <label for="fname">Restaurant Name</label>
+                            <input type="text" name="rname" id="rname">
+                        </div>
+
+                        <div class="form_item">
+                            <label for="pref">Zipcode</label>
+                            <input type="text" name="pref" id="zipcode">
+                        </div>
+                        <div class="form_item">
+                            
+                        </div>
+                        <div class="form_item">
+                            <fieldset >
+                                <legend>Veggie or Vegan?</legend>
+                                <input id='food-type-1'
+                                        name='talk-type'
+                                        type='radio'
+                                        value='Yes' />
+                                <label for='talk-type-1' class='radio-label'>Yes</label>
+                                <input id='food-type-2'
+                                        name='talk-type'
+                                        type='radio'
+                                        value='No'
+                                        checked />
+                                <label for='talk-type-2' class='radio-label'>No</label>
+                            </fieldset> 
+                        </div>
+                        <button class="button submit_button" type="submit">Search</button>
+                    </form>  
+                    
+                </div>
+                <div class="page_item">
+                    <h2><b>Restaurant List</b></h2>
+                    <ul class="resto-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
