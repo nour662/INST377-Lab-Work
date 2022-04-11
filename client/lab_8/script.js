@@ -31,6 +31,7 @@ function createHtmlList(collection) {
 }
 
 function initMap (targetID) {
+  // const latLong = [38, 77];
   const map = L.map(targetID).setView([51.505, -0.09], 13);
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -40,7 +41,7 @@ function initMap (targetID) {
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
   }).addTo(map);
-  return map; 
+  return map;
 }
 
 async function mainEvent() { // the async keyword means we can make API requests
@@ -55,8 +56,19 @@ async function mainEvent() { // the async keyword means we can make API requests
   submit.style.display = 'none';
   // const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
   // const arrayFromJson = await results.json(); // This changes it into data we can use - an object
-  const arrayFromJson = {data: []}; // TODO : remove debug tool
-  if (arrayFromJson.data.length > 0) { // no race statement
+  // const arrayFromJson = {data: []}; // TODO : remove debug tool
+  // localStorage.setItem('restaurants' , JSON.stringify(arrayFromJson));
+  if (localStorage.getItem('restaurants') === undefined) {
+    const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
+    const arrayFromJson = await results.json(); // This changes it into data we can use - an object
+    localStorage.setItem('restaurants' , JSON.stringify(arrayFromJson.data));
+  }
+
+  const storedData = localStorage.getItem('restaurants');
+  const storedDataArray = JSON.parse(storedData);
+  console.log(storedDataArray)
+
+  if (storedDataArray.data.length > 0) { // no race statement
     submit.style.display = 'block';
     let currentArray = [];
 
@@ -89,7 +101,7 @@ async function mainEvent() { // the async keyword means we can make API requests
       // console.table(arrayFromJson.data); // this is called "dot notation"
       // arrayFromJson.data - we're accessing a key called 'data' on the returned object
       // it contains all 1,000 records we need
-      currentArray = restoArrayMaker(arrayFromJson.data);
+      currentArray = restoArrayMaker(storedDataArray.data);
       createHtmlList(currentArray);
     });
   }
