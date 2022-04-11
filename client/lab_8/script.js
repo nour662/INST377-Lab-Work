@@ -31,8 +31,8 @@ function createHtmlList(collection) {
 }
 
 function initMap (targetID) {
-  // const latLong = [38, 77];
-  const map = L.map(targetID).setView([51.505, -0.09], 13);
+  const latLong = [38.784, -76.872];
+  const map = L.map(targetID).setView(latLong, 13);
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -42,6 +42,19 @@ function initMap (targetID) {
     accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
   }).addTo(map);
   return map;
+}
+function addMapMarkers(map, collection) {
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      layer.remove();
+    }
+  });
+
+  collection.forEach((item) => {
+    const point = item.geocoded_column_1?.coordinates;
+    console.log(item.geocoded_column_1?.coordinates);
+    L.marker([point[1], point[0]]).addTo(map);
+  });
 }
 
 async function mainEvent() { // the async keyword means we can make API requests
@@ -61,12 +74,12 @@ async function mainEvent() { // the async keyword means we can make API requests
   if (localStorage.getItem('restaurants') === undefined) {
     const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
     const arrayFromJson = await results.json(); // This changes it into data we can use - an object
-    localStorage.setItem('restaurants' , JSON.stringify(arrayFromJson.data));
+    localStorage.setItem('restaurants', JSON.stringify(arrayFromJson.data));
   }
 
   const storedData = localStorage.getItem('restaurants');
   const storedDataArray = JSON.parse(storedData);
-  console.log(storedDataArray)
+  console.log(storedDataArray);
 
   if (storedDataArray.data.length > 0) { // no race statement
     submit.style.display = 'block';
@@ -103,6 +116,7 @@ async function mainEvent() { // the async keyword means we can make API requests
       // it contains all 1,000 records we need
       currentArray = restoArrayMaker(storedDataArray.data);
       createHtmlList(currentArray);
+      addMapMarkers(map, currentArray);
     });
   }
 }
