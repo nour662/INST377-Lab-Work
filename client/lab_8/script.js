@@ -71,17 +71,17 @@ async function mainEvent() { // the async keyword means we can make API requests
   // const arrayFromJson = await results.json(); // This changes it into data we can use - an object
   // const arrayFromJson = {data: []}; // TODO : remove debug tool
   // localStorage.setItem('restaurants' , JSON.stringify(arrayFromJson));
-  if (localStorage.getItem('restaurants') === undefined) {
-    const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
-    const arrayFromJson = await results.json(); // This changes it into data we can use - an object
-    localStorage.setItem('restaurants', JSON.stringify(arrayFromJson.data));
-  }
+  // if (localStorage.getItem('restaurants') === undefined) {
 
-  const storedData = localStorage.getItem('restaurants');
-  const storedDataArray = JSON.parse(storedData);
-  console.log(storedDataArray);
+  // localStorage.setItem('restaurants', JSON.stringify(arrayFromJson.data));
+  // }
+  const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
+  const arrayFromJson = await results.json(); // This changes it into data we can use - an object
+  // const storedData = localStorage.getItem('restaurants');
+  // const storedDataArray = JSON.parse(storedData);
+  // console.log(storedDataArray);
 
-  if (storedDataArray.data.length > 0) { // no race statement
+  if (arrayFromJson.data.length > 0) { // no race statement
     submit.style.display = 'block';
     let currentArray = [];
 
@@ -116,7 +116,7 @@ async function mainEvent() { // the async keyword means we can make API requests
       // console.table(arrayFromJson.data); // this is called "dot notation"
       // arrayFromJson.data - we're accessing a key called 'data' on the returned object
       // it contains all 1,000 records we need
-      currentArray = restoArrayMaker(storedDataArray.data);
+      currentArray = restoArrayMaker(arrayFromJson.data);
       createHtmlList(currentArray);
       addMapMarkers(map, currentArray);
     });
