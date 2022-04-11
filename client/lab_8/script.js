@@ -94,6 +94,7 @@ async function mainEvent() { // the async keyword means we can make API requests
         return lowerName.includes(lowerValue);
       });
       createHtmlList(selectResto);
+      addMapMarkers(map, selectResto);
       // console.log(selectResto);
     });
     zipcode.addEventListener('input', async(event) => {
@@ -105,6 +106,7 @@ async function mainEvent() { // the async keyword means we can make API requests
         return lowerZip.includes(lowerValue);
       });
       createHtmlList(selectResto);
+      addMapMarkers(map, selectResto);
       // console.log(selectResto);
     });
 
