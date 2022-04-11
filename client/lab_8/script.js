@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 /* eslint-disable no-template-curly-in-string */
 /* eslint-disable max-len */
 // As the last step of your lab, hook this up to index.html
@@ -29,6 +30,19 @@ function createHtmlList(collection) {
   });
 }
 
+function initMap (targetID) {
+  const map = L.map(targetID).setView([51.505, -0.09], 13);
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+  }).addTo(map);
+  return map; 
+}
+
 async function mainEvent() { // the async keyword means we can make API requests
   console.log('script loaded');
   const form = document.querySelector('.main_form');
@@ -36,11 +50,12 @@ async function mainEvent() { // the async keyword means we can make API requests
 
   const resto = document.querySelector('#rname');
   const zipcode = document.querySelector('#zipcode');
+  const map = initMap('map');
 
   submit.style.display = 'none';
-  const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
-  const arrayFromJson = await results.json(); // This changes it into data we can use - an object
-
+  // const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
+  // const arrayFromJson = await results.json(); // This changes it into data we can use - an object
+  const arrayFromJson = {data: []}; // TODO : remove debug tool
   if (arrayFromJson.data.length > 0) { // no race statement
     submit.style.display = 'block';
     let currentArray = [];
